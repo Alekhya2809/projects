@@ -1,4 +1,4 @@
-# projects
+#  Student Expenditure project
 Student Expenditure 
 Here is a clear and concise abstract based on the project content:
 
