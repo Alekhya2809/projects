@@ -1,0 +1,138 @@
+import pandas as pd 
+import matplotlib.pyplot as plt 
+HELP_TEXT = """ 
+This is a program to show the expenditure per month of students 
+from 3 different countries. 
+1 - Representation of the expenditure by students using pie chart 
+    A - Country A 
+    B - Country B 
+    C - Country C 
+2 - Representation of the expenditure by the students using 
+multiple bar plots 
+3 - Representation of the expenditure by the students using 
+scatter chart 
+    A - Country A 
+    B - Country B 
+    C - Country C 
+q\quit - Quit 
+h\help - Print this help text 
+""" 
+# Creating a DataFrame from a CSV file. 
+df = pd.read_csv(r"C:\Users\Mythili\Desktop\Book1.csv") 
+def main(): 
+    print (HELP_TEXT) 
+    print (df) 
+ 
+    while True: 
+        choice = input("Choose an option for graphical 
+representation: ") 
+ 
+        if choice=='1': 
+            #For creating pie chart 
+            while True: 
+                choice1 = input("Country name: ") 
+                if choice1 == "A": 
+                    print("Representation of expenditure by students 
+from Country A using pie chart") 
+                    x = df["Country A"] 
+                    y = df["Expenses"] 
+                    clr = ["aqua", "lime", "gold", "crimson", "lavender"] 
+                    plt.title("Country A") 
+                    plt.pie(x, labels = y, colors = clr, autopct = "%1.2f%%") 
+                    plt.show() 
+                    break 
+                elif choice1 == "B": 
+                    print("Representation of expenditure by students 
+from Country B using pie chart") 
+                    x = df["Country B"] 
+                    y = df["Expenses"] 
+                    clr = ["aqua", "lime", "gold", "crimson", "lavender"] 
+                    plt.title("Country B") 
+                    plt.pie(x, labels = y, colors = clr, autopct = "%1.2f%%") 
+                    plt.show() 
+                    break 
+                elif choice1 == "C": 
+                   print("Representation of expenditure by students 
+from Country C using pie chart") 
+                   x = df["Country C"] 
+                   y = df["Expenses"] 
+                   clr = ["aqua", "lime", "gold", "crimson", "lavender"] 
+                   plt.title("Country C") 
+                   plt.pie(x, labels = y, colors = clr, autopct = "%1.2f%%") 
+                   plt.show() 
+                   break 
+                else: 
+                    print( 
+                        f"{choice1} is not a valid option. Enter 'help' to get 
+all valid options." 
+                        ) 
+                    print("\n") 
+                    break 
+        elif choice == "2": 
+            #For creating multiple bar plot 
+                print("Representation of the Expenditure of the 3 
+countries using multiple bar plots") 
+                df.plot(x="Expenses", y=["Country A", "Country B", 
+"Country C"], kind="bar", color = ["aqua", "crimson", "lime"]) 
+                plt.ylabel("Percentage") 
+                plt.xticks(rotation = 20) 
+                plt.title("Expenditure vs. Percentage") 
+                plt.show() 
+ 
+        elif choice == "3": 
+            #For creating scatter plot 
+            while True: 
+                choice3 = input("Country name: ") 
+                if choice3 == "A": 
+                     print("Representation of expenditure by students 
+from Country A using scatter chart") 
+                     x = df["Country A"] 
+                     y = df["Expenses"] 
+                     plt.scatter(y,x, color = "cyan") 
+                     plt.xlabel("Expenses") 
+                     plt.ylabel("Percentage") 
+                     plt.title("Country A") 
+                     plt.show() 
+                     break 
+                elif choice3 == "B": 
+                     print("Representation of expenditure by students 
+from Country B using scatter chart") 
+                     x = df["Country B"] 
+                     y = df["Expenses"] 
+                     plt.scatter(y,x, color = "cyan") 
+                     plt.xlabel("Expenses") 
+                     plt.ylabel("Percentage") 
+                     plt.title("Country B") 
+                     plt.show() 
+                     break 
+                elif choice3 == "C": 
+                     print("Representation of expenditure by students 
+from Country C using scatter chart") 
+                     x = df["Country C"] 
+                     y = df["Expenses"] 
+                     plt.scatter(y,x, color = "cyan") 
+                     plt.xlabel("Expenses") 
+                     plt.ylabel("Percentage") 
+                     plt.title("Country C") 
+                     plt.show() 
+                     break 
+                else: 
+                    print( 
+                        f"{choice3} is not a valid option. Enter 'help' to get 
+all valid options." 
+                        ) 
+                    print("\n") 
+                    break 
+        elif choice in ("h" ,"help"): 
+            print(HELP_TEXT) 
+        elif choice in ("q" ,"quit"): 
+            print("Quit ") 
+            return 
+        else: 
+            print( 
+                f"{choice} is not a valid option. Enter 'help' to get all 
+valid options." 
+                ) 
+            print("\n") 
+            continue 
+main()
